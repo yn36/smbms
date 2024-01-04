@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
         connection = BaseDao.getConnection();
         try {
-            user = userDao.getLoginUser(connection, userCode);
+            user = userDao.getLoginUser(connection, userCode, password);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {

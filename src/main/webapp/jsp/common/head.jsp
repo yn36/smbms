@@ -1,9 +1,9 @@
-<%@ page import="com.chanv.util.Constants" %>
-<%@ page import="com.chanv.pojo.User" %>
+<%@ page import="com.yn59.util.Constants" %>
+<%@ page import="com.yn59.pojo.User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">

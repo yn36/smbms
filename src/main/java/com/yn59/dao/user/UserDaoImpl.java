@@ -7,14 +7,14 @@ import java.sql.*;
 
 public class UserDaoImpl implements UserDao {
     @Override
-    public User getLoginUser(Connection connection, String userCode) throws SQLException {
+    public User getLoginUser(Connection connection, String userCode, String password) throws SQLException {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         User user = null;
 
         if (connection != null) {
-            String sql = "select * from user where userCode=?";
-            Object[] params = {userCode};
+            String sql = "select * from user where userCode=? and userPassword=?";
+            Object[] params = {userCode, password};
             rs = BaseDao.execute(connection, pstmt, sql, params);
 
             if (rs.next()) {

@@ -1,6 +1,6 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page import="com.chanv.util.Constants" %>
-<%@ page import="com.chanv.pojo.User" %>
+<%@ page import="com.yn59.util.Constants" %>
+<%@ page import="com.yn59.pojo.User" %>
 <%@include file="/jsp/common/head.jsp"%>
 
 <%
