@@ -54,6 +54,22 @@ public class UserServiceImpl implements UserService {
         return flag;
     }
 
+    @Override
+    public int getUserCount(String userName, int userRole) {
+        Connection connection = null;
+        int count = 0;
+
+        try {
+            connection = BaseDao.getConnection();
+            count = userDao.getUserCount(connection, userName, userRole);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            BaseDao.closeResource(connection, null, null);
+        }
+        return count;
+    }
+
     @Test()
     public void test() {
         User admin = new UserServiceImpl().login("admin", "1234567");
@@ -64,5 +80,11 @@ public class UserServiceImpl implements UserService {
     public void test2() {
         boolean flag = new UserServiceImpl().updatePwd(1, "1234567");
         System.out.println(flag);
+    }
+
+    @Test()
+    public void test3() {
+        int count = new UserServiceImpl().getUserCount("", 1);
+        System.out.println(count);
     }
 }

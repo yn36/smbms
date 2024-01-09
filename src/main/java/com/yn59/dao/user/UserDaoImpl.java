@@ -4,6 +4,7 @@ import com.yn59.dao.BaseDao;
 import com.yn59.pojo.User;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class UserDaoImpl implements UserDao {
     @Override
@@ -53,5 +54,36 @@ public class UserDaoImpl implements UserDao {
         }
 
         return updateRows;
+    }
+
+    @Override
+    public int getUserCount(Connection connection, String userName, int userRole) throws SQLException {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int count = 0;
+
+        if (connection != null) {
+            StringBuffer sql = new StringBuffer();
+            sql.append("select count(1) as count from user u,role r where u.userRole = r.id");
+            ArrayList<Object> list = new ArrayList<>();
+
+            if (!userName.equals("")) {
+                sql.append(" and u.userName like ?");
+                list.add("%" + userName + "%");
+            }
+            if (userRole > 0) {
+                sql.append(" and u.userRole = ?");
+                list.add(userRole);
+            }
+
+            Object[] params = list.toArray();
+
+            rs = BaseDao.execute(connection, pstmt, sql.toString(), params);
+
+            if (rs.next()) {
+                count = rs.getInt("count");
+            }
+        }
+        return count;
     }
 }
