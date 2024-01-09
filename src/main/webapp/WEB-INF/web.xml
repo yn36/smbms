@@ -14,8 +14,26 @@
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login.do</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.yn59.servlet.user.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout.do</url-pattern>
+    </servlet-mapping>
 
-
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.yn59.servlet.user.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/user.do</url-pattern>
+    </servlet-mapping>
+    
+    
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>com.yn59.filter.CharacterEncodingFilter</filter-class>
@@ -23,6 +41,15 @@
     <filter-mapping>
         <filter-name>CharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>SysFilter</filter-name>
+        <filter-class>com.yn59.filter.SysFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SysFilter</filter-name>
+        <url-pattern>/jsp/*</url-pattern>
     </filter-mapping>
 
 

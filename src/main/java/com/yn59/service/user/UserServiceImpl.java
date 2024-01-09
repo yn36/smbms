@@ -35,9 +35,34 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Override
+    public boolean updatePwd(int id, String password) {
+        Connection connection = null;
+        boolean flag = false;
+
+        connection = BaseDao.getConnection();
+        try {
+            int i = userDao.updatePwd(connection, id, password);
+            if (i > 0) {
+                flag = true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            BaseDao.closeResource(connection, null, null);
+        }
+        return flag;
+    }
+
     @Test()
     public void test() {
         User admin = new UserServiceImpl().login("admin", "1234567");
         System.out.println(admin.getUserName());
+    }
+
+    @Test()
+    public void test2() {
+        boolean flag = new UserServiceImpl().updatePwd(1, "1234567");
+        System.out.println(flag);
     }
 }

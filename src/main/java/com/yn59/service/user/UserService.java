@@ -4,4 +4,6 @@ import com.yn59.pojo.User;
 
 public interface UserService {
     public User login(String userCode, String password);
+
+    public boolean updatePwd(int id, String password);
 }
